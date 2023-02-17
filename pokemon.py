@@ -11,10 +11,10 @@ def getPokemon(pokemon):
 
     try:
         pokeAPIResponse = requests.get(pokeAPI).json()
-    except BaseException:
+    except BaseException as be:
         error = {
             "code": 100,
-            "description": "Error fetching data from Pokemon API"
+            "description": str(be.args[0])
         }
         return jsonify(error)
     
